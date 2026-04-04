@@ -10,6 +10,7 @@ import { keepPreviousData } from '@tanstack/react-query'
 import { sToMs } from '@shared/utils/time-utils'
 
 import { createGetQueryHook, errorHandler } from '../../tsq-helpers'
+import { componoApiInstance } from '../../axios'
 
 export const nodesQueryKeys = createQueryKeys('nodes', {
     getAllNodes: {
@@ -30,6 +31,7 @@ export const useGetNodes = createGetQueryHook({
     endpoint: GetAllNodesCommand.TSQ_url,
     responseSchema: GetAllNodesCommand.ResponseSchema,
     getQueryKey: () => nodesQueryKeys.getAllNodes.queryKey,
+    axiosInstance: componoApiInstance,
     rQueryParams: {
         refetchOnMount: true,
         staleTime: sToMs(5)
@@ -42,6 +44,7 @@ export const useGetNode = createGetQueryHook({
     responseSchema: GetOneNodeCommand.ResponseSchema,
     routeParamsSchema: GetOneNodeCommand.RequestSchema,
     getQueryKey: ({ route }) => nodesQueryKeys.getNode(route!).queryKey,
+    axiosInstance: componoApiInstance,
     rQueryParams: {
         refetchOnMount: true,
         staleTime: sToMs(5),
@@ -53,6 +56,7 @@ export const useGetPubKey = createGetQueryHook({
     endpoint: GetPubKeyCommand.TSQ_url,
     responseSchema: GetPubKeyCommand.ResponseSchema,
     getQueryKey: () => nodesQueryKeys.getPubKey.queryKey,
+    axiosInstance: componoApiInstance,
     rQueryParams: {
         placeholderData: keepPreviousData,
         refetchOnMount: true,
@@ -67,6 +71,7 @@ export const useGetNodesTags = createGetQueryHook({
     endpoint: GetAllNodesTagsCommand.TSQ_url,
     responseSchema: GetAllNodesTagsCommand.ResponseSchema,
     getQueryKey: () => nodesQueryKeys.getAllTags.queryKey,
+    axiosInstance: componoApiInstance,
     rQueryParams: {
         staleTime: 0
     },

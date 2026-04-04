@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { AxiosInstance } from 'axios'
 import { z } from 'zod'
 
 import { createUrl, handleRequestError } from '../helpers'
@@ -18,8 +19,12 @@ export function createMutationHook<
     requestQuerySchema,
     bodySchema,
     responseSchema,
-    rMutationParams
-}: CreateMutationHookArgs<RouteParamsSchema, RequestQuerySchema, BodySchema, ResponseSchema>) {
+    rMutationParams,
+    axiosInstance
+}: CreateMutationHookArgs<RouteParamsSchema, RequestQuerySchema, BodySchema, ResponseSchema> & {
+    /** Optional axios instance override for per-module backend cutover. */
+    axiosInstance?: AxiosInstance | null
+}) {
     return (params?: {
         mutationFns?: Partial<typeof rMutationParams>
         query?: z.infer<RequestQuerySchema>
@@ -42,7 +47,9 @@ export function createMutationHook<
         }) => {
             const url = createUrl(baseUrl, query, route)
 
-            return instance
+            const httpClient = axiosInstance ?? instance
+
+            return httpClient
                 .request<z.infer<ResponseSchema>>({
                     method: requestMethod,
                     url,
