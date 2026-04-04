@@ -108,7 +108,8 @@ export default defineConfig({
     define: {
         __DOMAIN_BACKEND__: JSON.stringify(process.env.DOMAIN_BACKEND || 'example.com').trim(),
         __NODE_ENV__: JSON.stringify(process.env.NODE_ENV).trim(),
-        __DOMAIN_OVERRIDE__: JSON.stringify(process.env.DOMAIN_OVERRIDE || '0').trim()
+        __DOMAIN_OVERRIDE__: JSON.stringify(process.env.DOMAIN_OVERRIDE || '0').trim(),
+        __VITE_API_BASE_URL__: JSON.stringify(process.env.VITE_API_BASE_URL || '').trim()
     },
     server: {
         host: '0.0.0.0',

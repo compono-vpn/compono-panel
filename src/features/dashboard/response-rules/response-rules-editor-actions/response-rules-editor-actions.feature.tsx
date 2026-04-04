@@ -35,7 +35,7 @@ import { useDownloadTemplate } from '@shared/ui/load-templates/use-download-temp
 import { QueryKeys, useUpdateSubscriptionSettings } from '@shared/api/hooks'
 import { BaseOverlayHeader } from '@shared/ui/overlays/base-overlay-header'
 import { useToken } from '@entities/auth/session-store/use-session-store'
-import { queryClient } from '@shared/api'
+import { API_BASE_URL, queryClient } from '@shared/api'
 
 import { Props } from './interfaces'
 
@@ -204,9 +204,8 @@ export function ResponseRulesEditorActionsFeature(props: Props) {
             return
         }
 
-        const baseUrl = window.location.origin
         const curlCommand = `curl -X 'POST' \\
-'${baseUrl}${TestSrrMatcherCommand.TSQ_url}' \\
+'${API_BASE_URL}${TestSrrMatcherCommand.TSQ_url}' \\
 -H 'accept: application/json' \\
 -H 'Content-Type: application/json' \\
 -H 'Authorization: Bearer ${token}' \\
