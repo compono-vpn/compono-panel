@@ -1,4 +1,5 @@
 import { QueryKey, useQuery, UseQueryResult } from '@tanstack/react-query'
+import { AxiosInstance } from 'axios'
 import { z } from 'zod'
 
 import { createUrl, handleRequestError } from '../helpers'
@@ -87,12 +88,18 @@ export function createGetQueryHook<
     queryParams,
     routeParams,
     errorHandler,
-    getQueryKey
+    getQueryKey,
+    axiosInstance
 }: CreateGetQueryHookArgs<ResponseSchema, RequestQuerySchema, RouteParamsSchema> & {
+    /** Optional axios instance override. When provided, requests go through this
+     *  instance instead of the default one. Used for per-module backend cutover. */
+    axiosInstance?: AxiosInstance | null
     getQueryKey: (
         params: QueryParams<z.infer<RouteParamsSchema>, z.infer<RequestQuerySchema>>
     ) => QueryKey
 }) {
+    const httpClient = axiosInstance ?? instance
+
     const queryFn = async (params?: {
         errorHandler?: ErrorHandler
         query?: z.infer<RequestQuerySchema>
@@ -102,7 +109,7 @@ export function createGetQueryHook<
 
         const url = createUrl(endpoint, validatedQuery, params?.route ?? routeParams)
 
-        return instance
+        return httpClient
             .get<z.infer<ResponseSchema>>(url)
             .then(async (response) => {
                 const result = await responseSchema.safeParseAsync(response.data)
