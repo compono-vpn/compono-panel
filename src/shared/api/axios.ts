@@ -9,22 +9,41 @@ import { logoutEvents } from '../emitters/emit-logout'
 
 let authorizationToken = ''
 
-let BASE_DOMAIN = __DOMAIN_BACKEND__
-const isDev = __NODE_ENV__ === 'development'
-const isDomainOverride = __DOMAIN_OVERRIDE__ === '1'
+/**
+ * Resolves the API base URL using the following priority:
+ *
+ * 1. VITE_API_BASE_URL — explicit override for cutover (e.g. "https://api.componovpn.com")
+ * 2. DOMAIN_OVERRIDE=1 + DOMAIN_BACKEND — legacy dev override
+ * 3. In development: DOMAIN_BACKEND (e.g. "http://127.0.0.1:3003")
+ * 4. In production: window.location.origin (same-origin, current default)
+ *
+ * To point the panel at compono-api for cutover, set VITE_API_BASE_URL in the
+ * Docker build or ArgoCD values. No code change required.
+ */
+function resolveApiBaseUrl(): string {
+    // Highest priority: explicit API base URL for migration/cutover
+    if (__VITE_API_BASE_URL__) {
+        return __VITE_API_BASE_URL__
+    }
 
-if (isDev) {
-    BASE_DOMAIN = __DOMAIN_BACKEND__
-} else {
-    BASE_DOMAIN = window.location.origin
+    // Legacy: DOMAIN_OVERRIDE forces DOMAIN_BACKEND regardless of environment
+    if (__DOMAIN_OVERRIDE__ === '1') {
+        return __DOMAIN_BACKEND__
+    }
+
+    // Development: use configured backend domain
+    if (__NODE_ENV__ === 'development') {
+        return __DOMAIN_BACKEND__
+    }
+
+    // Production default: same-origin (panel.compono.it.com serves both SPA and proxies API)
+    return window.location.origin
 }
 
-if (isDomainOverride) {
-    BASE_DOMAIN = __DOMAIN_BACKEND__
-}
+export const API_BASE_URL = resolveApiBaseUrl()
 
 export const instance = axios.create({
-    baseURL: BASE_DOMAIN,
+    baseURL: API_BASE_URL,
     headers: {
         'Content-type': 'application/json',
         Accept: 'application/json',
