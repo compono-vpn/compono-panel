@@ -1,5 +1,4 @@
 /* eslint-disable no-nested-ternary */
-/* eslint-disable indent */
 import dayjs from 'dayjs'
 
 export function getNodeResetDaysUtil(targetDay: number): number {
@@ -20,8 +19,8 @@ export function getNodeResetDaysUtil(targetDay: number): number {
         daysToThisMonth < 0
             ? correctedNextMonth
             : daysToThisMonth < daysToNextMonth
-              ? correctedThisMonth
-              : correctedNextMonth
+                ? correctedThisMonth
+                : correctedNextMonth
 
     return targetDate.diff(today, 'day')
 }

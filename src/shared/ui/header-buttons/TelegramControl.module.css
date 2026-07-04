@@ -1,6 +1,6 @@
 .telegram {
-    --telegram-color: #0088cc;
-    --telegram-color-hover: #0088cc;
+    --telegram-color: #08c;
+    --telegram-color-hover: #08c;
 
     @mixin light {
         background-color: var(--telegram-color);

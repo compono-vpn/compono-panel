@@ -10,7 +10,7 @@
 
 .dragHandle:hover {
     color: var(--mantine-color-teal-5);
-    background: rgba(20, 184, 166, 0.2);
+    background: rgb(20, 184, 166, 0.2);
     transform: scale(1.1);
 }
 

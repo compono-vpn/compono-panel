@@ -1,5 +1,10 @@
 name: Compono Panel CI/CD
 
+# BDT-398: typecheck + lint are required gate jobs in this SAME workflow so a
+# red gate blocks the image build (needs:). Panel has no test runner wired
+# yet (0 test files; jsdom/identity-obj-proxy devDeps are orphaned) — gating
+# on the existing typecheck/lint scripts only, per BDT-398 scope for this repo.
+
 on:
   push:
     branches:
@@ -23,9 +28,34 @@ env:
   IMAGE_NAME: compono-vpn/compono-panel
 
 jobs:
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+
   generate-tag:
     if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
     name: Generate Tag
+    needs: [typecheck, lint]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -52,7 +82,7 @@ jobs:
 
   build:
     name: Build
-    needs: generate-tag
+    needs: [generate-tag, typecheck, lint]
     runs-on: ubuntu-latest
     permissions:
       contents: read

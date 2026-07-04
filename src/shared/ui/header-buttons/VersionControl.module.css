@@ -1,15 +1,16 @@
-@keyframes glowPulse {
+@keyframes glow-pulse {
     0%,
     100% {
         box-shadow:
-            0 2px 8px rgba(0, 0, 0, 0.2),
-            0 1px 4px rgba(0, 0, 0, 0.1);
+            0 2px 8px rgb(0, 0, 0, 0.2),
+            0 1px 4px rgb(0, 0, 0, 0.1);
     }
+
     50% {
         box-shadow:
-            0 2px 8px rgba(0, 0, 0, 0.2),
-            0 1px 4px rgba(0, 0, 0, 0.1),
-            0 0 12px 2px rgba(6, 182, 212, 0.3);
+            0 2px 8px rgb(0, 0, 0, 0.2),
+            0 1px 4px rgb(0, 0, 0, 0.1),
+            0 0 12px 2px rgb(6, 182, 212, 0.3);
     }
 }
 
@@ -19,7 +20,7 @@
 
     &.newVersion {
         @mixin dark {
-            animation: glowPulse 3s ease-in-out infinite;
+            animation: glow-pulse 3s ease-in-out infinite;
             border-color: var(--mantine-color-cyan-5);
             color: var(--mantine-color-cyan-5);
         }

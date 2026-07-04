@@ -2,8 +2,8 @@ import {
     REMNAWAVE_CLIENT_TYPE_BROWSER,
     REMNAWAVE_CLIENT_TYPE_HEADER
 } from '@remnawave/backend-contract'
-import consola from 'consola/browser'
 import axios, { AxiosInstance } from 'axios'
+import consola from 'consola/browser'
 
 import { logoutEvents } from '../emitters/emit-logout'
 
@@ -51,7 +51,7 @@ export const API_BASE_URL = resolveApiBaseUrl()
  *
  * When empty/unset, returns null — callers should fall back to the default instance.
  */
-export const COMPONO_API_URL: string | null = __VITE_COMPONO_API_URL__ || null
+export const COMPONO_API_URL: null | string = __VITE_COMPONO_API_URL__ || null
 
 function applyInterceptors(inst: AxiosInstance): void {
     inst.interceptors.request.use((config) => {
@@ -101,13 +101,13 @@ applyInterceptors(instance)
  */
 export const componoApiInstance: AxiosInstance | null = COMPONO_API_URL
     ? (() => {
-          const inst = axios.create({
-              baseURL: COMPONO_API_URL,
-              headers: defaultHeaders
-          })
-          applyInterceptors(inst)
-          return inst
-      })()
+        const inst = axios.create({
+            baseURL: COMPONO_API_URL,
+            headers: defaultHeaders
+        })
+        applyInterceptors(inst)
+        return inst
+    })()
     : null
 
 export const setAuthorizationToken = (token: string) => {

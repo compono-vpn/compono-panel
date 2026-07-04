@@ -4,19 +4,20 @@
 
 .icon {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px -1px rgb(0, 0, 0, 0.2);
 }
 
 .itemWrapper {
     padding-bottom: 8px;
-    animation: fadeIn 0.1s ease-out;
-    -webkit-animation: fadeIn 0.1s ease-out;
+    animation: fade-in 0.1s ease-out;
+    -webkit-animation: fade-in 0.1s ease-out;
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
     from {
         transform: scale(0.95);
     }
+
     to {
         transform: scale(1);
     }

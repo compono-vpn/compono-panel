@@ -9,7 +9,6 @@ import { useGetHostTags } from '@shared/api/hooks'
 import type { IProps } from './interfaces/props.interface'
 
 export function HostTagsInputWidget(props: IProps) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { value, onChange, defaultValue, ...restProps } = props
     const [data, setData] = useState<string[]>([])
     const [search, setSearch] = useState(value?.toString() || '')
