@@ -20,4 +20,10 @@ npm ci
 npm run start:dev
 ```
 
+The Xray config editor also needs the generated runtime files listed in
+`Makefile`. Run `make download-monaco-deps` before a local production build.
+They are Vite public assets and are served from `/wasm_exec.js`, `/main.wasm`,
+`/xray.schema.json`, and `/xray.schema.cn.json`; the Docker build downloads them
+automatically.
+
 See `.env.sample` for the backend URL overrides used during API cutovers.

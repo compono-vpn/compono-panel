@@ -4,10 +4,14 @@ ARG GIT_HASH=unknown
 
 WORKDIR /app
 
+RUN apk add --no-cache curl make
+
 COPY package.json package-lock.json .npmrc ./
 RUN npm ci
 
 COPY . .
+
+RUN make download-monaco-deps
 
 ENV NODE_ENV=production
 ENV NODE_OPTIONS="--max-old-space-size=4096"
