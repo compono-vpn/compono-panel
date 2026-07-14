@@ -1,18 +1,23 @@
-## Remnawave Frontend
+# Compono Operator Panel
 
-Frontend for Remnawave Panel..
+React/TypeScript operator panel for Compono VPN, derived from the Remnawave
+frontend. Production is served at `https://panel.componovpn.com/` and uses the
+panel-compatible routes exposed by `compono-api`.
 
-Learn more about Remnawave Panel [here](https://docs.rw/).
+## Backend contract
 
-# Contributors
+The UI still consumes `@remnawave/backend-contract` schemas. Any replacement
+backend response must either match those schemas exactly or be normalized at
+the API boundary before validation. In particular, list responses contain
+expanded relations used by multiple screens (for example config-profile
+`inbounds`/`nodes` and internal-squad `info`/`inbounds`). Returning lean database
+rows makes the query fail validation and leaves the corresponding page loading.
 
-Check [open issues](https://github.com/remnawave/panel/issues) to help the progress of this project.
+## Development
 
-<p align="center">
-Thanks to the all contributors who have helped improve Remnawave:
-</p>
-<p align="center">
-<a href="https://github.com/remnawave/frontend/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=remnawave/frontend" />
-</a>
-</p>
+```bash
+npm ci
+npm run start:dev
+```
+
+See `.env.sample` for the backend URL overrides used during API cutovers.
