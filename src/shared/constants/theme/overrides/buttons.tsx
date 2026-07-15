@@ -1,14 +1,28 @@
-import { ActionIcon, Button, CloseButton, Switch } from '@mantine/core'
+import { ActionIcon, Anchor, Button, CloseButton, Switch } from '@mantine/core'
 
 export default {
     ActionIcon: ActionIcon.extend({
         defaultProps: {
+            color: 'var(--compono-ink)',
             radius: 'sm',
             variant: 'outline'
         },
         styles: {
             root: {
                 borderWidth: 2
+            }
+        }
+    }),
+    Anchor: Anchor.extend({
+        defaultProps: {
+            c: 'var(--compono-ink)',
+            underline: 'hover'
+        },
+        styles: {
+            root: {
+                textDecorationColor: 'var(--compono-accent)',
+                textDecorationThickness: 2,
+                textUnderlineOffset: 3
             }
         }
     }),
