@@ -8,6 +8,7 @@
         "nodes-bandwidth-table": "流量使用情况",
         "nodes-statistics": "统计数据",
         "nodes-metrics": "指标",
+        "relay-metrics": "中继指标",
         "users": "用户",
         "overview": "概述",
         "management": "管理",

@@ -118,6 +118,12 @@ export const useMenuSections = (): MenuItem[] => {
                             href: ROUTES.DASHBOARD.MANAGEMENT.NODES_METRICS,
                             icon: PiChartLine,
                             id: 'nodes-metrics'
+                        },
+                        {
+                            name: t('constants.relay-metrics'),
+                            href: ROUTES.DASHBOARD.MANAGEMENT.RELAY_METRICS,
+                            icon: PiAirTrafficControlDuotone,
+                            id: 'relay-metrics'
                         }
                     ]
                 },
