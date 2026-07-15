@@ -1,15 +1,15 @@
 {
-    "name": "Remnawave",
-    "short_name": "Remnawave",
+    "name": "Compono VPN Panel",
+    "short_name": "Compono",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#161B23",
+    "background_color": "#fffdf5",
     "lang": "en",
     "id": "/",
     "orientation": "any",
     "scope": "/",
-    "description": "Remnawave Dashboard",
-    "theme_color": "#161B23",
+    "description": "Compono VPN operator panel",
+    "theme_color": "#fffdf5",
     "icons": [
         {
             "src": "/favicons/favicon-64x64.png",
@@ -37,22 +37,6 @@
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"
-        }
-    ],
-    "screenshots": [
-        {
-            "src": "/favicons/preview_web.jpg",
-            "sizes": "1512x850",
-            "type": "image/jpeg",
-            "form_factor": "wide",
-            "label": "Remnawave Dashboard Overview"
-        },
-        {
-            "src": "/favicons/preview_mobile.jpg",
-            "sizes": "645x1398",
-            "type": "image/jpeg",
-            "form_factor": "narrow",
-            "label": "Remnawave Dashboard Overview"
         }
     ]
 }
