@@ -27,14 +27,15 @@ import { useCallback, useMemo } from 'react'
 import { TbServer } from 'react-icons/tb'
 
 import { MODALS, useModalsStoreOpenWithData } from '@entities/dashboard/modal-store'
+import { useGetNodes, useGetNodesMetrics } from '@shared/api/hooks'
 import { MetricCardShared } from '@shared/ui/metrics/metric-card'
-import { useGetNodesMetrics } from '@shared/api/hooks'
 
 import { NodeDetailsCard } from './node-details-card'
 import styles from './NodeDetails.module.css'
 
 export const NodeMetricsWidget = () => {
     const { data: nodeMetrics, isLoading } = useGetNodesMetrics()
+    const { data: nodes, isLoading: areNodesLoading } = useGetNodes()
     const openModalWithData = useModalsStoreOpenWithData()
     const isMobile = useMediaQuery('(max-width: 768px)')
 
@@ -50,7 +51,8 @@ export const NodeMetricsWidget = () => {
 
         const totalNodes = nodeMetrics.nodes.length
         const totalUsersOnline = nodeMetrics.nodes.reduce((acc, node) => acc + node.usersOnline, 0)
-        const activeNodes = nodeMetrics.nodes.filter((node) => node.usersOnline > 0).length
+        const activeNodes =
+            nodes?.filter((node) => node.isConnected && !node.isDisabled).length ?? 0
         const totalInbounds = nodeMetrics.nodes.reduce(
             (acc, node) => acc + node.inboundsStats.length,
             0
@@ -62,9 +64,9 @@ export const NodeMetricsWidget = () => {
             activeNodes,
             totalInbounds
         }
-    }, [nodeMetrics])
+    }, [nodeMetrics, nodes])
 
-    if (isLoading) {
+    if (isLoading || areNodesLoading) {
         return (
             <Center h={200}>
                 <Loader size="lg" />
