@@ -133,7 +133,7 @@ export function RelayMetricsPage({
                         </ActionIcon>
                     </Tooltip>
                 }
-                description="Compono two-hop health: relay sync targets, current public paths, and exit state"
+                description="Compono two-hop health: VPN relay, current public paths, and exit state"
                 icon={<IconArrowsShuffle size={24} />}
                 title="Relay Metrics"
             />
@@ -159,9 +159,9 @@ export function RelayMetricsPage({
                                     ? 'teal'
                                     : 'red'
                             }
-                            detail="Relay agents receiving user configs"
+                            detail="VK consolidation entry layer"
                             icon={<IconServer2 size={24} />}
-                            label="Healthy sync targets"
+                            label="Healthy VPN relays"
                             value={`${snapshot.summary.healthyRelays} / ${snapshot.summary.totalRelays}`}
                         />
                         <SummaryCard
@@ -199,10 +199,10 @@ export function RelayMetricsPage({
                         <Group align="flex-end" justify="space-between" mb="xs">
                             <Stack gap={0}>
                                 <Text fw={700} size="lg">
-                                    Relay-agent sync targets
+                                    VPN relay
                                 </Text>
                                 <Text c="dimmed" size="xs">
-                                    User-config destinations; these are not live connection counts
+                                    Relay-agent health and synchronized configs; not live connections
                                 </Text>
                             </Stack>
                             <Badge
@@ -423,8 +423,8 @@ export function RelayMetricsPage({
                                                 <Table.Td>
                                                     {target.lastSuccessAt
                                                         ? new Date(
-                                                              target.lastSuccessAt
-                                                          ).toLocaleString()
+                                                            target.lastSuccessAt
+                                                        ).toLocaleString()
                                                         : '—'}
                                                 </Table.Td>
                                             </Table.Tr>
