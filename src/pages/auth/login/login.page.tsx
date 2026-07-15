@@ -30,7 +30,7 @@ const getAuthMethods = (authStatus: GetStatusCommand.Response['response'] | unde
 
 const BrandLogo = ({ logoUrl }: { logoUrl?: null | string }) => {
     if (!logoUrl) {
-        return <Logo c="cyan" w="3rem" />
+        return <Logo c="var(--compono-ink)" w="3rem" />
     }
 
     return (
@@ -50,10 +50,10 @@ const BrandLogo = ({ logoUrl }: { logoUrl?: null | string }) => {
 
 const BrandTitle = ({ titleParts }: { titleParts: Array<{ color: string; text: string }> }) => {
     return (
-        <Title ff="Unbounded" order={1} pos="relative">
+        <Title ff="Inter" fw={800} order={1} pos="relative">
             {titleParts.map((part, index) => (
                 <Text
-                    c={part.color || 'white'}
+                    c={part.color || 'var(--compono-ink)'}
                     component="span"
                     fw="inherit"
                     fz="inherit"
@@ -104,10 +104,7 @@ export const LoginPage = () => {
             return parseColoredTextUtil(authStatus.branding.title)
         }
 
-        return [
-            { text: 'Remna', color: 'cyan' },
-            { text: 'wave', color: 'white' }
-        ]
+        return [{ text: 'COMPONO VPN', color: 'var(--compono-ink)' }]
     }, [authStatus?.branding.title])
 
     const isRegister = !authStatus?.isLoginAllowed && authStatus?.isRegisterAllowed
@@ -122,7 +119,7 @@ export const LoginPage = () => {
                 </Group>
 
                 {!authStatus && (
-                    <Badge color="cyan" mt={10} size="lg" variant="filled">
+                    <Badge color="yellow" mt={10} size="lg" variant="filled">
                         Server is not responding. Check logs.
                     </Badge>
                 )}

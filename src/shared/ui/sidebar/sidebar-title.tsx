@@ -14,16 +14,13 @@ export const SidebarTitleShared = () => {
             return parseColoredTextUtil(authStatus.branding.title)
         }
 
-        return [
-            { text: 'Remna', color: 'cyan' },
-            { text: 'wave', color: 'white' }
-        ]
+        return [{ text: 'COMPONO VPN', color: 'var(--compono-ink)' }]
     }, [authStatus?.branding.title])
 
     return (
         <Text className={classes.logoTitle}>
             {titleParts.map((part, index) => (
-                <Text c={part.color || 'white'} component="span" inherit key={index}>
+                <Text c={part.color || 'var(--compono-ink)'} component="span" inherit key={index}>
                     {part.text}
                 </Text>
             ))}

@@ -64,7 +64,7 @@ export const LoginFormFeature = () => {
                         loading={isLoading}
                         mt="xl"
                         type="submit"
-                        variant="default"
+                        variant="filled"
                     >
                         {t('login-form.feature.sign-in')}
                     </Button>

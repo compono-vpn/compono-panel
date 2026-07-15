@@ -65,7 +65,7 @@ export function App() {
                 {isDev && <ReactQueryDevtools initialIsOpen={false} />}
                 <AuthProvider>
                     <DirectionProvider>
-                        <MantineProvider defaultColorScheme="dark" theme={theme}>
+                        <MantineProvider defaultColorScheme="light" theme={theme}>
                             <ModalsProvider>
                                 <Notifications position={mq ? 'top-right' : 'bottom-right'} />
                                 <NavigationProgress />

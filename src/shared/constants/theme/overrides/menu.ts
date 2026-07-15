@@ -13,12 +13,12 @@ export default {
             },
             styles: {
                 dropdown: {
-                    backgroundColor: 'var(--mantine-color-dark-6)',
-                    border: '1px solid var(--mantine-color-dark-5)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2)'
+                    backgroundColor: 'var(--compono-surface)',
+                    border: '2px solid var(--compono-border)',
+                    boxShadow: '4px 4px 0 rgba(26, 26, 26, 0.9)'
                 },
                 divider: {
-                    borderColor: 'var(--mantine-color-dark-5)',
+                    borderColor: 'var(--compono-border)',
                     margin: '4px 0'
                 }
             }

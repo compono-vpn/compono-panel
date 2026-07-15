@@ -1,10 +1,11 @@
 .modalContent {
-    border: 1px solid rgb(255, 255, 255, 0.08);
+    border: 2px solid var(--compono-border);
+    box-shadow: 6px 6px 0 light-dark(#1a1a1a, #0d0d0d);
 }
 
 .modalHeader {
-    background: rgb(22, 27, 35, 0.95);
-    border-bottom: 1px solid rgb(255, 255, 255, 0.06);
+    background: var(--compono-surface);
+    border-bottom: 2px solid var(--compono-border);
     padding: var(--mantine-spacing-sm) var(--mantine-spacing-lg);
 
     /* @supports (padding: env(safe-area-inset-top)) {
