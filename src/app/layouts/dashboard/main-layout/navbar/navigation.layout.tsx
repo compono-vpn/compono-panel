@@ -19,7 +19,7 @@ export const Navigation = ({ isMobile, onClose }: NavigationProps) => {
         <Stack gap="md" pb="md" pt="md">
             {menu.map((item, index) => (
                 <Box key={item.id}>
-                    {index > 0 && <Divider color="cyan.4" mb="lg" opacity={0.3} variant="dashed" />}
+                    {index > 0 && <Divider color="yellow.5" mb="lg" opacity={0.8} />}
                     <Title className={classes.sectionTitle} order={6}>
                         {item.header}
                     </Title>

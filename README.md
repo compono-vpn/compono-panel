@@ -19,11 +19,23 @@ the canonical `/api/nodes` response (`isConnected && !isDisabled`); deriving it
 from `usersOnline` incorrectly reports zero healthy nodes whenever nobody is
 actively connected.
 
+## Visual system
+
+The panel uses the Compono VPN palette from the public site: cream `#fffdf5`
+canvas, near-black `#1a1a1a` ink and borders, and yellow `#ffd600` as the
+primary action/selection color. Inter is the UI and heading font. The default
+color scheme is light; dark mode remains supported through Mantine's color
+scheme. Keep navigation, cards, inputs, drawers, and modals flat and bordered —
+do not reintroduce cyan/teal decorative gradients into the application shell.
+
 ## Development
 
 ```bash
 npm ci
 npm run start:dev
+npm run typecheck
+npm run lint
+npm run start:build
 ```
 
 The Xray config editor also needs the generated runtime files listed in

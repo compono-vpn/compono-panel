@@ -13,8 +13,8 @@
 }
 
 .logoTitle {
-    font-family: Unbounded, sans-serif;
-    font-weight: 700;
+    font-family: Inter, sans-serif;
+    font-weight: 800;
     font-size: var(--mantine-font-size-lg);
     user-select: none;
     -webkit-user-select: none;

@@ -8,7 +8,7 @@ export const theme = createTheme({
     components,
     cursorType: 'pointer',
     fontFamily:
-        'Montserrat, Vazirmatn, Apple Color Emoji, Noto Sans SC, Twemoji Country Flags, sans-serif',
+        'Inter, Vazirmatn, Apple Color Emoji, Noto Sans SC, Twemoji Country Flags, sans-serif',
     fontFamilyMonospace: 'Fira Mono, monospace',
     breakpoints: {
         xs: '30em',
@@ -23,21 +23,21 @@ export const theme = createTheme({
 
     scale: 1,
     fontSmoothing: true,
-    focusRing: 'never',
-    white: '#ffffff',
-    black: '#24292f',
+    focusRing: 'auto',
+    white: '#fffdf5',
+    black: '#1a1a1a',
     colors: {
         dark: [
-            '#c9d1d9',
-            '#b1bac4',
-            '#8b949e',
-            '#6e7681',
-            '#484f58',
-            '#30363d',
-            '#21262d',
-            '#161b22',
-            '#0d1117',
-            '#010409'
+            '#fffdf5',
+            '#f1eee4',
+            '#d4d0c6',
+            '#aaa69e',
+            '#77746e',
+            '#4c4a46',
+            '#33322f',
+            '#242321',
+            '#1a1a1a',
+            '#111111'
         ],
 
         blue: [
@@ -65,16 +65,16 @@ export const theme = createTheme({
             '#002d11'
         ],
         yellow: [
-            '#fff8c5',
-            '#fae17d',
-            '#eac54f',
-            '#d4a72c',
-            '#bf8700',
-            '#9a6700',
-            '#7d4e00',
-            '#633c01',
-            '#4d2d00',
-            '#3b2300'
+            '#fffbe6',
+            '#fff5b8',
+            '#ffec80',
+            '#ffe347',
+            '#ffdc1f',
+            '#ffd600',
+            '#e6c100',
+            '#b39400',
+            '#806a00',
+            '#4d4000'
         ],
         orange: [
             '#fff1e5',
@@ -89,12 +89,13 @@ export const theme = createTheme({
             '#471700'
         ]
     },
-    primaryShade: 8,
-    primaryColor: 'cyan',
+    primaryShade: 5,
+    primaryColor: 'yellow',
     autoContrast: true,
     luminanceThreshold: 0.3,
     headings: {
-        fontWeight: '600'
+        fontWeight: '700',
+        fontFamily: 'Inter, Vazirmatn, sans-serif'
     },
-    defaultRadius: 'md'
+    defaultRadius: 'sm'
 })

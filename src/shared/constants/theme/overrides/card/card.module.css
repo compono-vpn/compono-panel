@@ -9,10 +9,8 @@
 }
 
 .root {
-    background: linear-gradient(
-        135deg,
-        var(--mantine-color-dark-6) 0%,
-        var(--mantine-color-dark-7) 100%
-    );
+    background: var(--compono-surface);
+    border: 2px solid var(--compono-border);
+    box-shadow: 3px 3px 0 light-dark(#1a1a1a, #0d0d0d);
     animation: fade-in 200ms linear both;
 }

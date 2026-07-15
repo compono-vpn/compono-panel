@@ -38,7 +38,7 @@ export const SidebarLogoShared = () => {
 
     return (
         <Logo
-            c="cyan"
+            c="var(--compono-ink)"
             className={classes.fadeIn}
             onClick={handleClick}
             style={{ cursor: 'pointer' }}
