@@ -13,6 +13,12 @@ expanded relations used by multiple screens (for example config-profile
 `inbounds`/`nodes` and internal-squad `info`/`inbounds`). Returning lean database
 rows makes the query fail validation and leaves the corresponding page loading.
 
+The node metrics route carries tagged traffic and online-user counters but no
+connection-status field. The dashboard's “Active Nodes” summary therefore uses
+the canonical `/api/nodes` response (`isConnected && !isDisabled`); deriving it
+from `usersOnline` incorrectly reports zero healthy nodes whenever nobody is
+actively connected.
+
 ## Development
 
 ```bash
