@@ -133,7 +133,7 @@ export function RelayMetricsPage({
                         </ActionIcon>
                     </Tooltip>
                 }
-                description="Compono two-hop path: entry relays, exit probes, and user-sync drift"
+                description="Compono two-hop health: relay sync targets, current public paths, and exit state"
                 icon={<IconArrowsShuffle size={24} />}
                 title="Relay Metrics"
             />
@@ -159,9 +159,9 @@ export function RelayMetricsPage({
                                     ? 'teal'
                                     : 'red'
                             }
-                            detail="Compono entry layer"
+                            detail="Relay agents receiving user configs"
                             icon={<IconServer2 size={24} />}
-                            label="Healthy relays"
+                            label="Healthy sync targets"
                             value={`${snapshot.summary.healthyRelays} / ${snapshot.summary.totalRelays}`}
                         />
                         <SummaryCard
@@ -179,16 +179,16 @@ export function RelayMetricsPage({
                             color={snapshot.summary.userCountMismatch ? 'red' : 'blue'}
                             detail={
                                 snapshot.summary.userCountMismatch
-                                    ? 'Relay user counts differ'
-                                    : 'Relay counts are aligned'
+                                    ? 'Synchronized user sets differ'
+                                    : 'Synchronized user sets are aligned'
                             }
                             icon={<IconUsers size={24} />}
-                            label="Active VPN users"
+                            label="Synced user configs"
                             value={snapshot.summary.databaseActiveUsers.toLocaleString()}
                         />
                         <SummaryCard
                             color={snapshot.summary.driftedTargets > 0 ? 'orange' : 'teal'}
-                            detail="Expected versus actual exit users"
+                            detail="Expected database users versus exit Xray"
                             icon={<IconDatabase size={24} />}
                             label="Sync drift"
                             value={`${snapshot.summary.driftedTargets} target${snapshot.summary.driftedTargets === 1 ? '' : 's'}`}
@@ -196,10 +196,15 @@ export function RelayMetricsPage({
                     </SimpleGrid>
 
                     <Box>
-                        <Group justify="space-between" mb="xs">
-                            <Text fw={700} size="lg">
-                                Entry relays
-                            </Text>
+                        <Group align="flex-end" justify="space-between" mb="xs">
+                            <Stack gap={0}>
+                                <Text fw={700} size="lg">
+                                    Relay-agent sync targets
+                                </Text>
+                                <Text c="dimmed" size="xs">
+                                    User-config destinations; these are not live connection counts
+                                </Text>
+                            </Stack>
                             <Badge
                                 color="gray"
                                 leftSection={<IconClock size={12} />}
@@ -240,7 +245,8 @@ export function RelayMetricsPage({
                                                         <Box>
                                                             <Text fw={700}>{relay.name}</Text>
                                                             <Text c="dimmed" size="xs">
-                                                                {relay.userCount} synced users
+                                                                {relay.userCount} synced user
+                                                                configs
                                                             </Text>
                                                         </Box>
                                                     </Group>
@@ -312,7 +318,7 @@ export function RelayMetricsPage({
 
                     <Card padding="lg" radius="md" withBorder>
                         <Text fw={700} mb="md" size="lg">
-                            Relay → exit path health
+                            Current public two-hop path health
                         </Text>
                         <Table.ScrollContainer minWidth={900}>
                             <Table highlightOnHover verticalSpacing="sm">
@@ -417,8 +423,8 @@ export function RelayMetricsPage({
                                                 <Table.Td>
                                                     {target.lastSuccessAt
                                                         ? new Date(
-                                                            target.lastSuccessAt
-                                                        ).toLocaleString()
+                                                              target.lastSuccessAt
+                                                          ).toLocaleString()
                                                         : '—'}
                                                 </Table.Td>
                                             </Table.Tr>
