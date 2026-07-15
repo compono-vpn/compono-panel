@@ -8,6 +8,7 @@
         "nodes-bandwidth-table": "Bandwidth",
         "nodes-statistics": "Statistics",
         "nodes-metrics": "Metrics",
+        "relay-metrics": "Relay Metrics",
         "users": "Users",
         "overview": "Overview",
         "management": "Management",

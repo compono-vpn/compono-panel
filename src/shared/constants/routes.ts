@@ -17,6 +17,7 @@ export const ROUTES = {
             NODES_BANDWIDTH_TABLE: '/dashboard/management/bandwidth-table',
             NODES_STATS: '/dashboard/management/stats/nodes',
             NODES_METRICS: '/dashboard/management/metrics/nodes',
+            RELAY_METRICS: '/dashboard/management/metrics/relays',
             SUBSCRIPTION_SETTINGS: '/dashboard/management/subscription-settings',
             RESPONSE_RULES: '/dashboard/management/response-rules',
             CONFIG_PROFILES: '/dashboard/management/config-profiles',

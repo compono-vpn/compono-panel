@@ -8,6 +8,7 @@
         "nodes-bandwidth-table": "Расход трафика",
         "nodes-statistics": "Статистика",
         "nodes-metrics": "Метрики",
+        "relay-metrics": "Метрики ретрансляторов",
         "users": "Пользователи",
         "overview": "Обзор",
         "management": "Управление",

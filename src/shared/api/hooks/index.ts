@@ -31,8 +31,9 @@ export * from './nodes/nodes.query.hooks'
 export * from './passkeys/passkeys.hooks'
 
 export * from './passkeys/passkeys.query.hooks'
-export * from './remnawave-settings/remnawave-settings.mutation.hooks'
+export * from './relay-metrics/relay-metrics.query.hooks'
 
+export * from './remnawave-settings/remnawave-settings.mutation.hooks'
 export * from './remnawave-settings/remnawave-settings.query.hooks'
 export * from './snippets/snippets.mutation.hooks'
 
