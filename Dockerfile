@@ -1,4 +1,4 @@
-FROM node:20-alpine AS build
+FROM node:22.23.4-alpine3.23 AS build
 
 ARG GIT_HASH=unknown
 
@@ -17,7 +17,7 @@ ENV NODE_ENV=production
 ENV NODE_OPTIONS="--max-old-space-size=4096"
 RUN npm run cb
 
-FROM nginx:stable-alpine
+FROM nginx:1.30.6-alpine
 
 COPY --from=build /app/dist /usr/share/nginx/html
 
