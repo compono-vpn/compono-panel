@@ -19,6 +19,8 @@ RUN npm run cb
 
 FROM nginx:1.30.6-alpine
 
+RUN apk upgrade --no-cache
+
 COPY --from=build /app/dist /usr/share/nginx/html
 
 RUN printf 'server {\n\
